@@ -1,6 +1,5 @@
 package com.example.starwars.api
 
-import com.example.starwars.infrastructure.Filme
 import com.example.starwars.infrastructure.Results
 import retrofit2.Call
 import retrofit2.http.GET

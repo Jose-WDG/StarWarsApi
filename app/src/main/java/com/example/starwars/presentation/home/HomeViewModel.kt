@@ -11,35 +11,33 @@ import retrofit2.Call
 import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
-    private var mutableLiveData:MutableLiveData<List<Filme>> = MutableLiveData<List<Filme>>()
-
-    init {
-        requestData()
-    }
+    private var mutableLiveData:MutableLiveData<List<Filme>>? = null
 
     private fun requestData(){
-        WebService.getInstance()?.let {
-            it.createService()
-            .requestFilms()
-            .enqueue(object : retrofit2.Callback<Results> {
-                override fun onFailure(call: Call<Results>, t: Throwable) {
-                    Log.d("Erro>","Erro na requisição: "+t.message)
-                }
+           WebService.getInstance()?.let {
+               it.createService()
+                   .requestFilms()
+                   .enqueue(object : retrofit2.Callback<Results> {
+                       override fun onFailure(call: Call<Results>, t: Throwable) {
+                           Log.d("Erro>","Erro na requisição: "+t.message)
+                       }
 
-                override fun onResponse(call: Call<Results>, response: Response<Results>) {
-                    response.body()?.let { setData(it.resultados) }
-                    Log.d("resultado>"," "+response.body()?.resultados)
-                }
-
-            })
-        }
+                       override fun onResponse(call: Call<Results>, response: Response<Results>) {
+                           response.body()?.let { setData(it.resultados) }
+                       }
+                   })
+           }
     }
 
     fun showDatas():LiveData<List<Filme>>{
-        return mutableLiveData
+        if(mutableLiveData == null){
+            mutableLiveData = MutableLiveData<List<Filme>>()
+            requestData()
+        }
+      return mutableLiveData as LiveData<List<Filme>>
     }
 
     private fun setData(filems: List<Filme>){
-        mutableLiveData.postValue(filems)
+        mutableLiveData?.postValue(filems)
     }
 }

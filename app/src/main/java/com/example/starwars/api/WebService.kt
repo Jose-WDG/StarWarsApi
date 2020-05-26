@@ -1,13 +1,10 @@
 package com.example.starwars.api
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class WebService private constructor() {
     private var retrofit: Retrofit

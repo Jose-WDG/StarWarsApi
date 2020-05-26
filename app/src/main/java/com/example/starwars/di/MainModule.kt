@@ -8,5 +8,4 @@ val mainModule = module {
     viewModel {
         HomeViewModel()
     }
-
 }
