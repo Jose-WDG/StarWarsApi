@@ -8,10 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starwars.R
 import com.example.starwars.infrastructure.Filme
+import java.util.*
+import kotlin.collections.ArrayList
 
 class FilmesAdapter(var filmes: List<Filme>) : RecyclerView.Adapter<FilmesAdapter.FilmesAdaoterViewHolder>(){
     private lateinit var context: Context
-    private var listener: FilmeListener<Filme>? = null
+    private var listener: HolderListener<Filme>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmesAdaoterViewHolder {
         val inflate = LayoutInflater.from(parent.context)
@@ -39,7 +41,7 @@ class FilmesAdapter(var filmes: List<Filme>) : RecyclerView.Adapter<FilmesAdapte
         }
     }
 
-    fun setLisstener(listener: FilmeListener<Filme>){
+    fun setLisstener(listener: HolderListener<Filme>){
         this.listener = listener
     }
 

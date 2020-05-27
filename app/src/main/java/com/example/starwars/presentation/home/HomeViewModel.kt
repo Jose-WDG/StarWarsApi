@@ -29,6 +29,8 @@ class HomeViewModel : ViewModel() {
            }
     }
 
+    fun getList() = mutableLiveData?.value
+
     fun showDatas():LiveData<List<Filme>>{
         if(mutableLiveData == null){
             mutableLiveData = MutableLiveData<List<Filme>>()
