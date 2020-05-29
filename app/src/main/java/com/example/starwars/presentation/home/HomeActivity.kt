@@ -13,6 +13,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupViews()
+
         supportFragmentManager.beginTransaction().add(
             R.id.root,
             HomeFragment()

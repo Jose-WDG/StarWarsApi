@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#272b30</color>
     <color name="colorAccent">#FFE300</color>
     <color name="itau_areia">#EFE9E5</color>
+    <color name="itau_tooltip_blue">#007AB7</color>
 </resources>

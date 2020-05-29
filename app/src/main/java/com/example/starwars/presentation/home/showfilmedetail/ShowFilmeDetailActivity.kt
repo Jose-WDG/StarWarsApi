@@ -1,12 +1,15 @@
 package com.example.starwars.presentation.home.showfilmedetail
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.starwars.R
 import com.example.starwars.api.WebService
 import com.example.starwars.infrastructure.Filme
-import com.example.starwars.infrastructure.Results
+import com.example.starwars.presentation.tooltip.Tooltip
 import kotlinx.android.synthetic.main.activity_show_filme_detail.*
 import retrofit2.Call
 import retrofit2.Response
@@ -33,6 +36,22 @@ class ShowFilmeDetailActivity : AppCompatActivity() {
 
                 })
         }
+        val tooltip = Tooltip.Builder(testeTooltip)
+            .setGravity(Gravity.BOTTOM)
+            .setPadding(40)
+            .setTextSize(14F)
+            .setBackgroundColor(ContextCompat.getColor(this,R.color.itau_tooltip_blue))
+            .setTextColor(Color.WHITE)
+            .setText("Visualize seu extrato até 90 dias")
+            .setCornerRadius(8F)
+            .setCancelable(true)
+            .build()
+        tooltip.show()
+
+        testeTooltip.setOnClickListener {
+            tooltip.show()
+        }
+
 
     }
 }
